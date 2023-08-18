@@ -1,3 +1,7 @@
+//go:build !tinygo
+// +build !tinygo
+
+
 package metrics
 
 import (

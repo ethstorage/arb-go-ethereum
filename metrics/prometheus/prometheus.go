@@ -15,6 +15,10 @@
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
 // Package prometheus exposes go-metrics into a Prometheus format.
+
+//go:build !tinygo
+// +build !tinygo
+
 package prometheus
 
 import (

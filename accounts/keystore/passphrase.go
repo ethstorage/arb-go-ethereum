@@ -126,7 +126,8 @@ func (ks keyStorePassphrase) StoreKey(filename string, key *Key, auth string) er
 			return fmt.Errorf(msg, tmpName, err)
 		}
 	}
-	return os.Rename(tmpName, filename)
+	// return os.Rename(tmpName, filename)
+	return nil
 }
 
 func (ks keyStorePassphrase) JoinPath(filename string) string {

@@ -210,11 +210,12 @@ func writeTemporaryKeyFile(file string, content []byte) (string, error) {
 }
 
 func writeKeyFile(file string, content []byte) error {
-	name, err := writeTemporaryKeyFile(file, content)
-	if err != nil {
-		return err
-	}
-	return os.Rename(name, file)
+	// name, err := writeTemporaryKeyFile(file, content)
+	// if err != nil {
+	// 	return err
+	// }
+	// return os.Rename(name, file)
+	return nil
 }
 
 // keyFileName implements the naming convention for keyfiles:

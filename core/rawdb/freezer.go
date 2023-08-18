@@ -484,20 +484,18 @@ func (f *Freezer) MigrateTable(kind string, convert convertLegacyFn) error {
 	if err := newTable.Close(); err != nil {
 		return err
 	}
-	files, err := os.ReadDir(migrationPath)
-	if err != nil {
-		return err
-	}
+	// files, err := os.ReadDir(migrationPath)
+	// if err != nil {
+	// 	return err
+	// }
 	// Move migrated files to ancients dir.
-	for _, f := range files {
-		// This will replace the old index file as a side-effect.
-		if err := os.Rename(filepath.Join(migrationPath, f.Name()), filepath.Join(ancientsPath, f.Name())); err != nil {
-			return err
-		}
-	}
+	// for _, f := range files {
+	// 	// This will replace the old index file as a side-effect.
+	// 	if err := os.Rename(filepath.Join(migrationPath, f.Name()), filepath.Join(ancientsPath, f.Name())); err != nil {
+	// 		return err
+	// 	}
+	// }
 	// Delete by now empty dir.
-	if err := os.Remove(migrationPath); err != nil {
-		return err
-	}
+
 	return nil
 }

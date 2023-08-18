@@ -81,9 +81,9 @@ func (f *Feed) Subscribe(channel interface{}) Subscription {
 
 	f.mu.Lock()
 	defer f.mu.Unlock()
-	if !f.typecheck(chantyp.Elem()) {
-		panic(feedTypeError{op: "Subscribe", got: chantyp, want: reflect.ChanOf(reflect.SendDir, f.etype)})
-	}
+	// if !f.typecheck(chantyp.Elem()) {
+	// 	panic(feedTypeError{op: "Subscribe", got: chantyp, want: reflect.ChanOf(reflect.SendDir, f.etype)})
+	// }
 	// Add the select case to the inbox.
 	// The next Send will add it to f.sendCases.
 	cas := reflect.SelectCase{Dir: reflect.SelectSend, Chan: chanval}
@@ -156,13 +156,13 @@ func (f *Feed) Send(value interface{}) (nsent int) {
 		// Fast path: try sending without blocking before adding to the select set.
 		// This should usually succeed if subscribers are fast enough and have free
 		// buffer space.
-		for i := firstSubSendCase; i < len(cases); i++ {
-			if cases[i].Chan.TrySend(rvalue) {
-				nsent++
-				cases = cases.deactivate(i)
-				i--
-			}
-		}
+		// for i := firstSubSendCase; i < len(cases); i++ {
+		// 	if cases[i].Chan.TrySend(rvalue) {
+		// 		nsent++
+		// 		cases = cases.deactivate(i)
+		// 		i--
+		// 	}
+		// }
 		if len(cases) == firstSubSendCase {
 			break
 		}

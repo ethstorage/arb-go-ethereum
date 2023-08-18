@@ -77,9 +77,9 @@ func (f *ResettableFreezer) Reset() error {
 		return err
 	}
 	tmp := tmpName(f.datadir)
-	if err := os.Rename(f.datadir, tmp); err != nil {
-		return err
-	}
+	// if err := os.Rename(f.datadir, tmp); err != nil {
+	// 	return err
+	// }
 	if err := os.RemoveAll(tmp); err != nil {
 		return err
 	}

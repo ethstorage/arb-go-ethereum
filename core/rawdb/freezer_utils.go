@@ -74,9 +74,9 @@ func copyFrom(srcPath, destPath string, offset uint64, before func(f *os.File) e
 	}
 	f = nil
 
-	if err := os.Rename(fname, destPath); err != nil {
-		return err
-	}
+	// if err := os.Rename(fname, destPath); err != nil {
+	// 	return err
+	// }
 	return nil
 }
 
